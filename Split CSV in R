@@ -1,0 +1,9 @@
+
+## 1. Read CSV
+my_file <- read.csv("/Users/Tamiraa/Desktop/202210-divvy-tripdata.csv")
+
+## 2.Split into multiple files
+grps <- (split(my_file, (seq(nrow(my_file))-1) %/% 40000))
+for (i in seq_along(grps)) {
+  write.csv(grps[[i]], paste0("/Users/Tamiraa/Desktop/202210_", i, ".csv"))
+}
